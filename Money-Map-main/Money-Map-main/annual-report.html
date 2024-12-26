@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Money Map - A Year in a Glance</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background-color: #f9f9f9;
+        padding: 20px;
+      }
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        color: #28a745;
+        text-align: center;
+      }
+      table {
+        width: 100%;
+        margin-top: 20px;
+        text-align: center;
+        border-collapse: collapse;
+      }
+      th,
+      td {
+        padding: 10px;
+        border: 1px dotted #ccc; /* Excel-style dotted lines */
+      }
+      .total-row {
+        font-weight: bold;
+        background-color: #f0f0f0; /* Light gray for annual total */
+      }
+      /* Format the "Annual Total" column with light gray background */
+      td.annual-total {
+        background-color: #f0f0f0;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Money Map - A Year in a Glance</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th>Jan</th>
+            <th>Feb</th>
+            <th>Mar</th>
+            <th>Apr</th>
+            <th>May</th>
+            <th>Jun</th>
+            <th>Jul</th>
+            <th>Aug</th>
+            <th>Sep</th>
+            <th>Oct</th>
+            <th>Nov</th>
+            <th>Dec</th>
+            <th>Annual Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Income</td>
+            <td>$<span class="monthly-value" id="monthly-income"></span></td>
+            <td>$<span class="monthly-value" id="monthly-income"></span></td>
+            <td>$<span class="monthly-value" id="monthly-income"></span></td>
+            <td>$<span class="monthly-value" id="monthly-income"></span></td>
+            <td>$<span class="monthly-value" id="monthly-income"></span></td>
+            <td>$<span class="monthly-value" id="monthly-income"></span></td>
+            <td>$<span class="monthly-value" id="monthly-income"></span></td>
+            <td>$<span class="monthly-value" id="monthly-income"></span></td>
+            <td>$<span class="monthly-value" id="monthly-income"></span></td>
+            <td>$<span class="monthly-value" id="monthly-income"></span></td>
+            <td>$<span class="monthly-value" id="monthly-income"></span></td>
+            <td>$<span class="monthly-value" id="monthly-income"></span></td>
+            <td class="annual-total">$<span id="annual-income"></span></td>
+          </tr>
+          <tr>
+            <td>Housing</td>
+            <td>$<span class="monthly-value" id="monthly-housing"></span></td>
+            <td>$<span class="monthly-value" id="monthly-housing"></span></td>
+            <td>$<span class="monthly-value" id="monthly-housing"></span></td>
+            <td>$<span class="monthly-value" id="monthly-housing"></span></td>
+            <td>$<span class="monthly-value" id="monthly-housing"></span></td>
+            <td>$<span class="monthly-value" id="monthly-housing"></span></td>
+            <td>$<span class="monthly-value" id="monthly-housing"></span></td>
+            <td>$<span class="monthly-value" id="monthly-housing"></span></td>
+            <td>$<span class="monthly-value" id="monthly-housing"></span></td>
+            <td>$<span class="monthly-value" id="monthly-housing"></span></td>
+            <td>$<span class="monthly-value" id="monthly-housing"></span></td>
+            <td>$<span class="monthly-value" id="monthly-housing"></span></td>
+            <td class="annual-total">$<span id="annual-housing"></span></td>
+          </tr>
+          <tr>
+            <td>Transportation</td>
+            <td>
+              $<span class="monthly-value" id="monthly-transportation"></span>
+            </td>
+            <td>
+              $<span class="monthly-value" id="monthly-transportation"></span>
+            </td>
+            <td>
+              $<span class="monthly-value" id="monthly-transportation"></span>
+            </td>
+            <td>
+              $<span class="monthly-value" id="monthly-transportation"></span>
+            </td>
+            <td>
+              $<span class="monthly-value" id="monthly-transportation"></span>
+            </td>
+            <td>
+              $<span class="monthly-value" id="monthly-transportation"></span>
+            </td>
+            <td>
+              $<span class="monthly-value" id="monthly-transportation"></span>
+            </td>
+            <td>
+              $<span class="monthly-value" id="monthly-transportation"></span>
+            </td>
+            <td>
+              $<span class="monthly-value" id="monthly-transportation"></span>
+            </td>
+            <td>
+              $<span class="monthly-value" id="monthly-transportation"></span>
+            </td>
+            <td>
+              $<span class="monthly-value" id="monthly-transportation"></span>
+            </td>
+            <td>
+              $<span class="monthly-value" id="monthly-transportation"></span>
+            </td>
+            <td class="annual-total">
+              $<span id="annual-transportation"></span>
+            </td>
+          </tr>
+          <tr>
+            <td>Total Expenses</td>
+            <td colspan="12">$<span id="total-expenses"></span></td>
+            <td class="annual-total">
+              $<span id="annual-total-expenses"></span>
+            </td>
+          </tr>
+          <tr>
+            <td>Remaining Income</td>
+            <td colspan="12">$<span id="remaining-income"></span></td>
+            <td class="annual-total">
+              $<span id="annual-remaining-income"></span>
+            </td>
+          </tr>
+          <!-- Repeat similar structure for other categories like Food, Entertainment, Personal Care, and Extras -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- JavaScript to retrieve and display the data with commas formatting -->
+    <script>
+      // Helper function to format numbers with commas for values over $1,000
+      function formatWithCommas(value) {
+        return parseFloat(value).toLocaleString("en-US");
+      }
+
+      // Retrieve stored data from localStorage
+      const monthlyIncome = localStorage.getItem("monthlyIncome");
+      const monthlyHousing = localStorage.getItem("monthlyHousing");
+      const monthlyTransportation = localStorage.getItem(
+        "monthlyTransportation"
+      );
+      const monthlyFood = localStorage.getItem("monthlyFood");
+      const monthlyEntertainment = localStorage.getItem("monthlyEntertainment");
+      const monthlyPersonalCare = localStorage.getItem("monthlyPersonalCare");
+      const monthlyExtras = localStorage.getItem("monthlyExtras");
+
+      const annualIncome = localStorage.getItem("annualIncome");
+      const annualHousing = localStorage.getItem("annualHousing");
+      const annualTransportation = localStorage.getItem("annualTransportation");
+      const annualFood = localStorage.getItem("annualFood");
+      const annualEntertainment = localStorage.getItem("annualEntertainment");
+      const annualPersonalCare = localStorage.getItem("annualPersonalCare");
+      const annualExtras = localStorage.getItem("annualExtras");
+
+      // Display monthly data for all 12 months (since it's the same value for each month)
+      document
+        .querySelectorAll(".monthly-value#monthly-income")
+        .forEach((el) => (el.textContent = formatWithCommas(monthlyIncome)));
+      document
+        .querySelectorAll(".monthly-value#monthly-housing")
+        .forEach((el) => (el.textContent = formatWithCommas(monthlyHousing)));
+      document
+        .querySelectorAll(".monthly-value#monthly-transportation")
+        .forEach(
+          (el) => (el.textContent = formatWithCommas(monthlyTransportation))
+        );
+
+      // Display annual totals with comma formatting
+      document.getElementById("annual-income").textContent =
+        formatWithCommas(annualIncome);
+      document.getElementById("annual-housing").textContent =
+        formatWithCommas(annualHousing);
+      document.getElementById("annual-transportation").textContent =
+        formatWithCommas(annualTransportation);
+
+      const totalExpenses = localStorage.getItem("totalExpenses");
+      const remainingIncome = localStorage.getItem("remainingIncome");
+
+      // Display total expenses and remaining income
+      document.getElementById("total-expenses").textContent =
+        formatWithCommas(totalExpenses);
+      document.getElementById("remaining-income").textContent =
+        formatWithCommas(remainingIncome);
+      document.getElementById("annual-total-expenses").textContent =
+        formatWithCommas(totalExpenses * 12); // Annual total expenses
+      document.getElementById("annual-remaining-income").textContent =
+        formatWithCommas(remainingIncome * 12); // Annual remaining income
+    </script>
+  </body>
+</html>

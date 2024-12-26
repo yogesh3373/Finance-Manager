@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Budget Calculator</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background-color: #f0f8ff;
+        padding: 20px;
+      }
+      .result-box {
+        margin-top: 20px;
+        padding: 15px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        display: none; /* Initially hidden */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="dollar-logo"></div>
+      <h1>Money Map(₹)</h1>
+      <form id="budget-form">
+        <div class="mb-3">
+          <label for="income" class="form-label">Monthly Income (INR)</label>
+          <input type="number" class="form-control" id="income" required />
+        </div>
+        <div class="mb-3">
+          <label for="housing" class="form-label">Housing (INR)</label>
+          <input type="number" class="form-control" id="housing" required />
+        </div>
+        <div class="mb-3">
+          <label for="transportation" class="form-label"
+            >Transportation (INR)</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            id="transportation"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label for="food" class="form-label">Food (INR)</label>
+          <input type="number" class="form-control" id="food" required />
+        </div>
+        <div class="mb-3">
+          <label for="entertainment" class="form-label"
+            >Entertainment (INR)</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            id="entertainment"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label for="personalCare" class="form-label"
+            >Personal Care (INR)</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            id="personalCare"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label for="extras" class="form-label">Extras (INR)</label>
+          <input type="number" class="form-control" id="extras" required />
+        </div>
+        <button type="submit" class="btn btn-primary">Calculate</button>
+      </form>
+
+      <div class="result-box" id="result-box">
+        <h3>Results</h3>
+        <p>Total Expenses: ₹<span id="total-expenses-result"></span></p>
+        <p>Remaining Income: ₹<span id="remaining-income-result"></span></p>
+      </div>
+    </div>
+
+    <div
+      class="modal fade"
+      id="notificationModal"
+      tabindex="-1"
+      aria-labelledby="notificationModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="notificationModalLabel">
+              Notification
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body" id="modal-message">
+            <!-- Message will be inserted here -->
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
